@@ -1,20 +1,18 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        map<int,int>table;
-        map<int,int>::iterator iter;
+        unordered_map<int,int>table;
         vector<int>ans;
-        //create map
-        for(int i=0;i<nums.size();i++){
-            table[nums[i]]=i;
-        }
         //search
         
         for(int i=0;i<nums.size();i++){
-            iter=table.find(target-nums[i]);
-            if(iter!=table.end()&&iter->second!=i){
-                ans.push_back(i);ans.push_back(iter->second);
+            if(table.find(target-nums[i])!=table.end()&&table.find(target-nums[i])->second!=i){//find num whetherin table
+                ans.push_back(i);
+                ans.push_back(table[target-nums[i]]);
                 return ans;
+            }
+            else{// if not in it , create it this step save many time
+                table[nums[i]]=i;
             }
                 
         }
