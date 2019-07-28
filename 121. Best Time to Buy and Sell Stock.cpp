@@ -11,7 +11,7 @@ public:
                 if(ans>max)max=ans;
             }
             else
-                buy_size=prices[i];
+                buy_size=prices[i];//相減小於0 代表找到一個比原本還小的數字 之後就用它來判斷
             
         }
         return max;
